@@ -1,27 +1,68 @@
-  describe("Airport", function() {
-    it("sets the default capacity of the airport to 20", function() {
-      myAirport = new Airport();
-      expect(myAirport.CAPACITY).toEqual(20);
+  
+  describe("Thermostat", function() {
+
+    beforeEach(function () {
+      thermostat = new Thermostat();
     });
 
-    it("allows the user to update capacity of the airport", function() {
-      myAirport = new Airport(30);
-      expect(myAirport.CAPACITY).toEqual(30);
+    it("sets the default temperature of the thermostat to 30", function() {
+      expect(thermostat.temperature).toEqual(30); 
     });
+
+    it("sets power saving mode to be on by default", function() {
+      expect(thermostat.safeMode).toEqual(true);
+    });
+
+     it("returns false if temperature is 26", function () {
+       safeMode = new Thermostat();
+      safeMode.temperature = 26;
+        safeMode.checkSafeMode();
+       expect(safeMode.safeMode).toEqual(false);
+     });
+
+   
+     it("returns false if the temperature is 32", function() {
+       safeMode = new Thermostat();
+       safeMode.temperature = 21;
+       safeMode.temperature = 32;
+       safeMode.checkSafeMode();
+       expect(safeMode.safeMode).toEqual(false);
+     });
+
+     it("resets the temperature to 20", function() {
+       thermostat.resetTemperature();
+       expect(thermostat.temperature).toEqual(20);
+     });
 
   });
 
-  describe("Weather", function() {
+  describe("TempController", function() {
 
-    it("returns false if the weather is good", function() {
-      airport= new Airport();
-      spyOn(Math,'random').and.returnValue(1);
-      expect(airport.isStormy()).toEqual(false);
+    beforeEach(function () {
+      Temp = new TempController();
     });
 
-    it("returns true if the weather is bad", function() {
-      airport = new Airport();
-      spyOn(Math,'random').and.returnValue(0);
-      expect(airport.isStormy()).toEqual(true);
+    it("allows you to increase  temperature of the thermostat", function() {
+      expect(Temp.increase(30)).toEqual(32);
+    });
+
+    it("allows you to decrease the temperature of the thermostat", function () {
+      expect(Temp.decrease(30)).toEqual(28);
+    });
+
+  });
+  
+  describe ("CheckTemp", function() {
+    it("throws an error if the temperature goes below 10", function() {
+      thermo = new Thermostat();
+      checkTemp = new CheckTemp();
+      thermo.temperature = 10;
+      test = thermo.temperature;
+      expect(function(){checkTemp.checkMin(test);}).toThrowError(("temperature is too low. ensure temperature > 10"));
     });
   });
+
+
+
+
+ 
