@@ -14,10 +14,10 @@
     });
 
      it("returns false if temperature is 26", function () {
-       safeMode = new Thermostat();
+      safeMode = new Thermostat();
       safeMode.temperature = 26;
-        safeMode.checkSafeMode();
-       expect(safeMode.safeMode).toEqual(false);
+      safeMode.checkSafeMode();
+      expect(safeMode.safeMode).toEqual(false);
      });
 
    
@@ -33,6 +33,25 @@
        thermostat.resetTemperature();
        expect(thermostat.temperature).toEqual(20);
      });
+
+     
+     it("sets the energy usage of the system to high if temperature > 25", function() {
+      thermostat.temperature = 26;
+      thermostat.checkPowerUsage();
+      expect(thermostat.energyLevel).toEqual("high");
+     });
+
+    it("sets the energy usage of the system to low if temperature < 18", function () {
+      thermostat.temperature = 17;
+      thermostat.checkPowerUsage();
+      expect(thermostat.energyLevel).toEqual("low");
+    });
+
+    it("sets the energy usage of the system to mid if temperature > 18 && < 25", function () {
+      thermostat.temperature = 21;
+      thermostat.checkPowerUsage();
+      expect(thermostat.energyLevel).toEqual("medium");
+    });
 
   });
 
