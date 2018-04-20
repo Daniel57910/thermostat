@@ -2,7 +2,6 @@
 function Thermostat() { }
 function TempController() { }
 function CheckTemp() { }
-function Weather () {}
 
 Thermostat.prototype.temperature = 30;
 Thermostat.prototype.safeMode = true;
