@@ -1,0 +1,17 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/danielwork/Documents/GitHub/makers/week5/thermostat/ex-api/lib/app.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        0,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1524224372
+  }
+}
