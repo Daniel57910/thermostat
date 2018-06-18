@@ -4,6 +4,7 @@
     updateTemp();
     getWeatherApi();
     checkSafeMode();
+
   });
 
 function getWeatherApi() {
@@ -26,6 +27,14 @@ function updateTemp() {
     checkSafeMode();
     checkEnergyLevel();
     $(".current_temperature").text(thermostat.temperature);
+    if (thermostat.temperature <= 10) {
+      console.log("ERROR MESSAGE");
+      $(".error_message").text(thermostat.errorMessage);
+    }
+
+    if (thermostat.temperature > 10) {
+      $(".error_message").text("");
+    }
   });
 
   $(".reset_temperature").click(function () {
@@ -34,6 +43,7 @@ function updateTemp() {
     checkEnergyLevel();
     $(".current_temperature").text(thermostat.temperature);
   });
+
 }
 
 function checkSafeMode() {
@@ -60,13 +70,7 @@ function checkEnergyLevel() {
 
 }
 
-  if (thermostat.temperature <= 10) {
-    $(".error_message").text(thermostat.errorMessage);
-  }
 
-  if (thermostat.temperature > 10) {
-     $(".error_message").text("");
-  }
 
 
   

@@ -55,33 +55,4 @@
 
   });
 
-  describe("TempController", function() {
 
-    beforeEach(function () {
-      Temp = new TempController();
-    });
-
-    it("allows you to increase  temperature of the thermostat", function() {
-      expect(Temp.increase(30)).toEqual(32);
-    });
-
-    it("allows you to decrease the temperature of the thermostat", function () {
-      expect(Temp.decrease(30)).toEqual(28);
-    });
-
-  });
-  
-  describe ("CheckTemp", function() {
-    it("throws an error if the temperature goes below 10", function() {
-      thermo = new Thermostat();
-      checkTemp = new CheckTemp();
-      thermo.temperature = 10;
-      test = thermo.temperature;
-      expect(function(){checkTemp.checkMin(test);}).toThrowError(("temperature is too low. ensure temperature > 10"));
-    });
-  });
-
-
-
-
- 
